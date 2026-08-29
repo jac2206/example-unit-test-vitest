@@ -14,7 +14,8 @@ export default defineConfig({
         "**/*.spec.ts",
         "**/node_modules/**",
         "src/config/**",
-        "src/services/interfaces/**"      
+        "src/services/interfaces/**",
+        "src/index.ts"      
     ]
     }
   }

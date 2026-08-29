@@ -1,24 +1,11 @@
-//   let person = {
-//     name: "Julian",
-//     lastName: "Arango",
-//     age: 32
-//   }
-
-// export const personObject = async (person: any) => {
-//   console.log("person is: ", person)
-//   return person;
-// }
-
-// personObject(person);
-
 import {
   IPersonService,
   Person
-} from "./src/services/interfaces/person.interface";
-import { ICalculatorService } from "./src/services/interfaces/calculator.interface";
+} from "./services/interfaces/person.interface";
+import { ICalculatorService } from "./services/interfaces/calculator.interface";
 // import { PersonService } from "./src/services/person.service";
 // import { CalculatorService } from "./src/services/calculator.service";
-import { container } from "./src/config/container";
+import { container } from "./config/container";
 
 const person: Person = {
   name: "Julian",
@@ -47,6 +34,8 @@ async function main() {
   console.log("Result subtract:", resultSubtract);
   const resultMultiply = await calculatorService.multiply(5, 10);
   console.log("Result multiply:", resultMultiply);
+  const resultDivision = await calculatorService.divison(5, 5);
+  console.log("Result multiply:", resultDivision);
 }
 
 main();
