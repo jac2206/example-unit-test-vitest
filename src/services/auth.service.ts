@@ -24,7 +24,10 @@ export class AuthService implements IAuthService {
     return await this.classifyPassword(password);
   }
 
-  private async validateUserAndPassMandatory(username: string, password: string): Promise<boolean> {
+  private async validateUserAndPassMandatory(
+    username: string,
+    password: string,
+  ): Promise<boolean> {
     if (!username) {
       throw new Error("Username is mandatory");
     }
@@ -40,7 +43,12 @@ export class AuthService implements IAuthService {
   }
 
   private async classifyPassword(password: string): Promise<string> {
-    if(password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) {
+    if (
+      password.length >= 8 &&
+      /[A-Z]/.test(password) &&
+      /[0-9]/.test(password) &&
+      /[^A-Za-z0-9]/.test(password)
+    ) {
       return passwordClassification.STRONG;
     }
     if (password.length >= 6 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {

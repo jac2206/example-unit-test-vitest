@@ -50,8 +50,7 @@ describe("AuthService", () => {
     await expect(service.login(username, password)).rejects.toThrow(
       "Password is mandatory",
     );
-  }
-    );
+  });
 
   it("should classify password as weak if less than 6 characters", async () => {
     // Arrange
