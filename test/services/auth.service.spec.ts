@@ -51,4 +51,51 @@ describe("AuthService", () => {
       "Password is mandatory",
     );
   });
+
+  it("should classify password as weak if less than 6 characters", async () => {
+    // Arrange
+    const service = new AuthService();
+    const password = "12345";
+
+    // Act
+    const result = await service.validateRulesPassword(password);
+
+    // Assert
+    expect(result).toBe("weak");
+  });
+
+  it("should classify password as medium if between 6 and 10 characters", async () => {
+    // Arrange
+    const service = new AuthService();
+    const password = "Hola1234";
+
+    // Act
+    const result = await service.validateRulesPassword(password);
+
+    // Assert
+    expect(result).toBe("medium");
+  });
+
+  it("should classify password as strong if more than 10 characters", async () => {
+    // Arrange
+    const service = new AuthService();
+    const password = "12345678901Hola?";
+
+    // Act
+    const result = await service.validateRulesPassword(password);
+
+    // Assert
+    expect(result).toBe("strong");
+  });
+
+  it("should throw error if password is empty when validating rules", async () => {
+    // Arrange
+    const service = new AuthService();
+    const password = "";
+
+    // Act & Assert
+    await expect(service.validateRulesPassword(password)).rejects.toThrow(
+      "Password is mandatory",
+    );
+  });
 });

@@ -49,6 +49,8 @@ async function main() {
   const resultPurchaseDiscount =
     await purchaseDiscountService.calculateDiscount(products);
   console.log("Purchase discount created:", resultPurchaseDiscount);
+  const resultAuthRules = await authService.validateRulesPassword("Abc12345");
+  console.log("Auth rules result:", resultAuthRules);
 }
 
 main();
